@@ -1,0 +1,33 @@
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 1rem;
+  width: 400px;
+  gap: 0.5rem;
+}
+
+form > h1 {
+  margin: 0;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  background-color: #f3f4f6;
+  height: 40px;
+  border-radius: 12px;
+  color: black;
+  border: 2px solid transparent;
+  transition: border 0.25s, box-shadow 0.25s;
+}
+
+input:focus {
+  border-color: #3b83f6;
+  outline: none;
+}

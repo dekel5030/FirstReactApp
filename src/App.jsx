@@ -1,8 +1,9 @@
 import "./styles/app.css";
-import Form from "./components/Form";
-import Resume from "./components/Resume";
+import Form from "./components/Form/Form";
+import Resume from "./components/Resume/Resume";
 import { useState } from "react";
-import Folder from "./components/Folder";
+import Folder from "./components/Folder/Folder";
+import FolderItem from "./components/FolderItem/FolderItem";
 
 const educationData = [
   {
@@ -43,65 +44,73 @@ export default function App() {
   return (
     <div className="app" key={person.id}>
       <aside className="editPanel">
-        <Form
-          title={"Personal Details"}
-          fields={[
-            {
-              fieldName: "fullName",
-              fieldTitle: "Full name",
-              fieldValue: person.fullName,
-              fieldOnChange: (value) => handleFieldChange("fullName", value),
-            },
-            {
-              fieldName: "email",
-              fieldTitle: "Email",
-              fieldValue: person.email,
-              fieldOnChange: (value) => handleFieldChange("email", value),
-            },
-            {
-              fieldName: "phoneNumber",
-              fieldTitle: "Phone number",
-              fieldValue: person.phone,
-              fieldOnChange: (value) => handleFieldChange("phone", value),
-            },
-            {
-              fieldName: "address",
-              fieldTitle: "Address",
-              fieldValue: person.location,
-              fieldOnChange: (value) => handleFieldChange("location", value),
-            },
-          ]}
-        />
-        <Folder title={"Education"}>
-          {person.educations.map((education) => (
-            <div className="education-item" key={education.id}>
-              {education.school}
-            </div>
+        <div className="personal-details">
+          <h1>Personal Details</h1>
+          <Form
+            title={"Personal Details"}
+            fields={[
+              {
+                fieldName: "fullName",
+                fieldTitle: "Full name",
+                fieldValue: person.fullName,
+                fieldOnChange: (value) => handleFieldChange("fullName", value),
+              },
+              {
+                fieldName: "email",
+                fieldTitle: "Email",
+                fieldValue: person.email,
+                fieldOnChange: (value) => handleFieldChange("email", value),
+              },
+              {
+                fieldName: "phoneNumber",
+                fieldTitle: "Phone number",
+                fieldValue: person.phone,
+                fieldOnChange: (value) => handleFieldChange("phone", value),
+              },
+              {
+                fieldName: "address",
+                fieldTitle: "Address",
+                fieldValue: person.location,
+                fieldOnChange: (value) => handleFieldChange("location", value),
+              },
+            ]}
+          />
+        </div>
+
+        <Folder title={"Education"} className="folder">
+          <Form
+            title={"Education"}
+            fields={[
+              { fieldName: "school", fieldTitle: "School" },
+              { fieldName: "degree", fieldTitle: "Degree" },
+              { fieldName: "startDate", fieldTitle: "Start Date" },
+              { fieldName: "endDate", fieldTitle: "End Date" },
+              { fieldName: "location", fieldTitle: "Location" },
+            ]}
+          />
+          {educationData.map((education) => (
+            <FolderItem
+              className="folder-item"
+              key={education.id}
+              title={education.school}
+            ></FolderItem>
           ))}
         </Folder>
-        <Form
-          title={"Education"}
-          fields={[
-            { fieldName: "school", fieldTitle: "School" },
-            { fieldName: "degree", fieldTitle: "Degree" },
-            { fieldName: "startDate", fieldTitle: "Start Date" },
-            { fieldName: "endDate", fieldTitle: "End Date" },
-            { fieldName: "location", fieldTitle: "Location" },
-          ]}
-        />
-        <Form
-          title={"Experience"}
-          fields={[
-            { fieldName: "companyName", fieldTitle: "Company Name" },
-            { fieldName: "positionTitle", fieldTitle: "Position Title" },
-            { fieldName: "startDate", fieldTitle: "Start Date" },
-            { fieldName: "endDate", fieldTitle: "End Date" },
-            { fieldName: "location", fieldTitle: "Location" },
-            { fieldName: "description", fieldTitle: "Description" },
-          ]}
-        />
+        <Folder title={"Experience"} className="folder">
+          <Form
+            title={"Experience"}
+            fields={[
+              { fieldName: "companyName", fieldTitle: "Company Name" },
+              { fieldName: "positionTitle", fieldTitle: "Position Title" },
+              { fieldName: "startDate", fieldTitle: "Start Date" },
+              { fieldName: "endDate", fieldTitle: "End Date" },
+              { fieldName: "location", fieldTitle: "Location" },
+              { fieldName: "description", fieldTitle: "Description" },
+            ]}
+          />
+        </Folder>
       </aside>
-      <main className="resume">
+      <main className="resume-panel">
         <Resume {...person} />
       </main>
     </div>

@@ -5,6 +5,11 @@ h2 {
 
 .folder {
   display: flex;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
@@ -17,4 +22,16 @@ h2 {
 .left,
 .right {
   display: flex;
+}
+
+.items,
+.items.open {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4px;
+  gap: 4px;
+}
+
+.items {
+  display: none;
 }

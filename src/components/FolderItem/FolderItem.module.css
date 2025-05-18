@@ -1,0 +1,25 @@
+.folder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 12px;
+}
+
+.title {
+  margin: 0;
+}
+
+button {
+  height: 50%;
+  aspect-ratio: 1 / 1;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(0, 0, 0, 0.9);
+  transition: color 0.3s ease;
+}
+
+button:hover {
+  color: rgba(0, 0, 0, 0.5);
+}

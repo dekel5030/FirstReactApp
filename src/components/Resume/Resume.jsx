@@ -1,4 +1,4 @@
-import "../styles/resume.css";
+import styles from "./Resume.module.css";
 
 export default function Resume({
   fullName,
@@ -6,21 +6,22 @@ export default function Resume({
   phone,
   location,
   educations,
+  className = "",
 }) {
   return (
     <>
-      <header className="personal-info">
+      <header className={`${styles["persona-info"]} ${className}`}>
         <h1>{fullName}</h1>
-        <div className="contact-details">
-          <div className="email">
+        <div className={styles["contact-details"]}>
+          <div className={styles.email}>
             <img src="" alt="" />
             {email}
           </div>
-          <div className="phone">
+          <div className={styles.phone}>
             <img src="" alt="" />
             {phone}
           </div>
-          <div className="location">
+          <div className={styles.location}>
             <img src="" alt="" />
             {location}
           </div>
@@ -28,15 +29,15 @@ export default function Resume({
       </header>
 
       <main>
-        <section className="educations">
+        <section className={styles.educations}>
           <h2>Education</h2>
           {educations.map((education) => (
-            <div className="education" key={education.id}>
-              <div className="education-date">
+            <div className={styles.education} key={education.id}>
+              <div className={styles.educationDate}>
                 {education.startDate} - {education.endDate},{" "}
                 {education.location}
               </div>
-              <div className="education-info">
+              <div className={styles.educationInfo}>
                 {education.school}, {education.degree}
               </div>
             </div>

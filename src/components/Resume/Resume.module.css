@@ -22,26 +22,6 @@ h2 {
   gap: 1rem;
 }
 
-.educations {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem 3rem;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.educations > h2 {
-  display: flex;
-  justify-content: center;
-  background-color: #eef1f2;
-  color: #0e374e;
-}
-
-.education {
-  display: flex;
-  gap: 3rem;
-}
-
 header {
   display: flex;
   flex-direction: column;
@@ -54,4 +34,45 @@ header {
 
 main {
   background-color: white;
+}
+
+.experiences > h2,
+.educations > h2 {
+  display: flex;
+  justify-content: center;
+  background-color: #eef1f2;
+  color: #0e374e;
+}
+
+.experiences,
+.educations {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 3rem;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.experience-meta,
+.educations-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience,
+.education {
+  display: flex;
+  gap: 2rem;
+}
+
+.experience-date,
+.education-date {
+  width: 120px;
+}
+
+.experience-details,
+.education-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }

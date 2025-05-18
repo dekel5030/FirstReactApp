@@ -4,41 +4,74 @@ import Resume from "./components/Resume/Resume";
 import { useState } from "react";
 import Folder from "./components/Folder/Folder";
 import FolderItem from "./components/FolderItem/FolderItem";
+import EducationSection from "./components/EducationSection/EducationSection";
+import WorkExperienceSection from "./components/ExperienceSection/WorkExperienceSection";
 
 const educationData = [
   {
     id: 1,
-    startDate: "2018",
+    startDate: "2019",
     endDate: "2022",
-    school: "University of Example",
+    school: "HIT - Holon Institute of Technology",
     degree: "B.Sc. Computer Science",
-    location: "Israel",
+    location: "Holon, Israel",
   },
   {
     id: 2,
     startDate: "2023",
-    endDate: "2025",
-    school: "Example Tech Institute",
-    degree: "M.Sc. Software Engineering",
-    location: "Israel",
+    endDate: "2024",
+    school: "Online Programs",
+    degree: "Full-Stack JavaScript Bootcamp (The Odin Project)",
+    location: "Remote",
+  },
+];
+
+const experienceData = [
+  {
+    id: 1,
+    companyName: "Freelance Projects",
+    positionTitle: "Full-Stack Developer",
+    startDate: "2023",
+    endDate: "Present",
+    location: "Remote",
+    description:
+      "Built interactive full-stack web applications using React, Node.js, Express, and MongoDB. Designed responsive UIs with HTML, CSS, and Tailwind. Implemented authentication, dynamic routing, and CI/CD pipelines.",
+  },
+  {
+    id: 2,
+    companyName: "HIT DevOps Course Project",
+    positionTitle: "DevOps Engineer (Student Project)",
+    startDate: "2024",
+    endDate: "2024",
+    location: "Holon, Israel",
+    description:
+      "Developed and deployed a JSP web app with CI/CD pipeline using Jenkins and GitHub. Integrated Tomcat server, automated UI testing with Selenium, performance testing with Gatling, and used UptimeRobot for live monitoring.",
+  },
+  {
+    id: 3,
+    companyName: "Personal Projects",
+    positionTitle: "Frontend Developer",
+    startDate: "2023",
+    endDate: "Present",
+    location: "Tel Aviv, Israel",
+    description:
+      "Built and deployed React apps featuring carousel UI, dropdown navigation, resume editor with editable sections, and integrated RESTful APIs for data handling.",
   },
 ];
 
 export default function App() {
   const [person, setPerson] = useState({
     id: 1,
-    fullName: "John Doe",
-    email: "john@example.com",
-    phone: "+1 234 567 890",
-    location: "New York, NY",
+    fullName: "Dekel Rafian",
+    email: "dekel5030@gmail.com",
+    phone: "+972 535278827",
+    location: "Holon, IL",
     educations: educationData,
+    experiences: experienceData,
   });
 
   function handleFieldChange(field, value) {
-    setPerson((prev) => ({
-      ...prev,
-      [field]: value,
-    }));
+    setPerson({ ...person, [field]: value });
   }
 
   return (
@@ -76,39 +109,15 @@ export default function App() {
             ]}
           />
         </div>
+        <EducationSection
+          educationData={person.educations}
+          setPerson={setPerson}
+        ></EducationSection>
 
-        <Folder title={"Education"} className="folder">
-          <Form
-            title={"Education"}
-            fields={[
-              { fieldName: "school", fieldTitle: "School" },
-              { fieldName: "degree", fieldTitle: "Degree" },
-              { fieldName: "startDate", fieldTitle: "Start Date" },
-              { fieldName: "endDate", fieldTitle: "End Date" },
-              { fieldName: "location", fieldTitle: "Location" },
-            ]}
-          />
-          {educationData.map((education) => (
-            <FolderItem
-              className="folder-item"
-              key={education.id}
-              title={education.school}
-            ></FolderItem>
-          ))}
-        </Folder>
-        <Folder title={"Experience"} className="folder">
-          <Form
-            title={"Experience"}
-            fields={[
-              { fieldName: "companyName", fieldTitle: "Company Name" },
-              { fieldName: "positionTitle", fieldTitle: "Position Title" },
-              { fieldName: "startDate", fieldTitle: "Start Date" },
-              { fieldName: "endDate", fieldTitle: "End Date" },
-              { fieldName: "location", fieldTitle: "Location" },
-              { fieldName: "description", fieldTitle: "Description" },
-            ]}
-          />
-        </Folder>
+        <WorkExperienceSection
+          experienceData={person.experiences}
+          setPerson={setPerson}
+        />
       </aside>
       <main className="resume-panel">
         <Resume {...person} />

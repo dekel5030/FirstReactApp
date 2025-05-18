@@ -28,10 +28,15 @@ h2 {
 .items.open {
   display: flex;
   flex-direction: column;
-  margin-top: 4px;
-  gap: 4px;
+  margin-top: 6px;
+  gap: 6px;
 }
 
 .items {
   display: none;
+}
+
+.closed {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }

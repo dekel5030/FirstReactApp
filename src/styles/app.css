@@ -49,9 +49,30 @@ form {
 .resume-panel {
   box-shadow: 0 0 20px gray;
   width: 800px;
+  min-height: 800px;
 }
 
 .folder-item {
   height: 3rem;
   padding: 1rem;
+  cursor: pointer;
+}
+
+.add-education-button,
+.add-experience-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.add-education-button button,
+.add-experience-button button {
+  width: 120px;
+  height: 40px;
+  border: 4px solid var(--background-color);
+  border-radius: 100px;
+  font-weight: 600;
 }
